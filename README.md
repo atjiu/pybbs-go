@@ -28,10 +28,19 @@
 - 运行 bee run 
 - 将pybbs-go.sql导入数据库
 - 浏览器输入 http://localhost:8080
+- 登录 用户名:朋也 密码:123123 默认是超级管理员,进去了可以体验权限部分
 
 ## 注意
 
 - 如果访问地址不是localhost,需要修改conf/app.conf文件里的cookie.domain,否则登录后不会记录登录状态
+
+## 权限部分截图
+
+![qq20160826-0 2x](https://cloud.githubusercontent.com/assets/6915570/18008071/4e509d50-6bd9-11e6-8663-6e81af221079.png)
+![qq20160826-1 2x](https://cloud.githubusercontent.com/assets/6915570/18008074/4e87322a-6bd9-11e6-9bd5-bab182846204.png)
+![qq20160826-2 2x](https://cloud.githubusercontent.com/assets/6915570/18008072/4e6c3592-6bd9-11e6-9a8c-d66f9a2e2aba.png)
+![qq20160826-3 2x](https://cloud.githubusercontent.com/assets/6915570/18008073/4e86cae2-6bd9-11e6-9208-bdcb371424d8.png)
+![qq20160826-4 2x](https://cloud.githubusercontent.com/assets/6915570/18008075/4e917046-6bd9-11e6-9c43-322c85751d67.png)
 
 ## 碰到问题怎么办?
 
