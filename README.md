@@ -43,6 +43,13 @@
 
 欢迎大家提pr
 
+## 捐赠
+
+![image](https://cloud.githubusercontent.com/assets/6915570/18000010/9283d530-6bae-11e6-8c34-cd27060b9074.png)
+![image](https://cloud.githubusercontent.com/assets/6915570/17999995/7c2a4db4-6bae-11e6-891c-4b6bc4f00f4b.png)
+
+请朋也喝杯茶吧
+
 ## 开源协议
 
 MIT
