@@ -5,8 +5,8 @@ import "github.com/astaxie/beego/orm"
 type Permission struct {
     Id          int `orm:"pk;auto"`
     Pid         int
-    Url         string `orm:"unique"`
-    Name        string `orm:"unique"`
+    Url         string
+    Name        string
     Description string
     Roles       []*Role `orm:"reverse(many)"`
     ChildPermissions []*Permission `orm:"-"`
