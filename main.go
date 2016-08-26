@@ -8,11 +8,10 @@ import (
     _ "github.com/go-sql-driver/mysql"
     _ "pybbs-go/utils"
     _ "pybbs-go/templates"
-    "regexp"
 )
 
 func init(){
-    orm.RegisterDataBase("default", "mysql", "root:@/pybbs-go?charset=utf8&parseTime=true&charset=utf8&loc=Asia%2FShanghai", 30)
+    orm.RegisterDataBase("default", "mysql", beego.AppConfig.String("jdbc.username") + ":" + beego.AppConfig.String("jdbc.password") + "@/pybbs-go?charset=utf8&parseTime=true&charset=utf8&loc=Asia%2FShanghai", 30)
     orm.RegisterModel(
 		new(models.User),
 		new(models.Topic),
@@ -26,8 +25,8 @@ func init(){
 
 func main() {
     //orm.Debug = true
-    ok, err := regexp.MatchString("/topic/edit/[0-9]+", "/topic/edit/123")
-    beego.Debug(ok, err)
+    //ok, err := regexp.MatchString("/topic/edit/[0-9]+", "/topic/edit/123")
+    //beego.Debug(ok, err)
 	beego.Run()
 }
 
