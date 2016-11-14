@@ -102,6 +102,7 @@ func (c *IndexController) Logout() {
 
 //关于
 func (c *IndexController) About() {
+	  c.Data["IsLogin"], c.Data["UserInfo"] = filters.IsLogin(c.Controller.Ctx)
     c.Data["PageTitle"] = "关于"
     c.Layout = "layout/layout.tpl"
     c.TplName = "about.tpl"

@@ -12,6 +12,7 @@
 - [github.com/astaxie/beego/orm](https://github.com/astaxie/beego/orm)
 - [github.com/xeonx/timeago](https://github.com/xeonx/timeago)
 - [github.com/russross/blackfriday](https://github.com/russross/blackfriday)
+- [github.com/sluu99/uuid](github.com/sluu99/uuid)
 
 ## 其他版本
 
@@ -23,9 +24,9 @@
 - 安装上面的依赖
 - 安装 [bee](https://github.com/beego/bee) 工具
 - 在mysql数据库里创建数据库名字叫pybbs-go
-- 进入 pybbs-go 目录 
-- 修改conf/app.conf文件里的jdbc.username 和 jdbc.password 
-- 运行 bee run 
+- 进入 pybbs-go 目录
+- 修改conf/app.conf文件里的jdbc.username 和 jdbc.password
+- 运行 bee run
 - 将pybbs-go.sql导入数据库
 - 浏览器输入 http://localhost:8080
 - 登录 用户名:朋也 密码:123123 默认是超级管理员,进去了可以体验权限部分
