@@ -2,7 +2,7 @@
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
-        添加权限
+        编辑权限
       </div>
       <div class="panel-body">
         <div class="panel-body">

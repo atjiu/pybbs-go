@@ -6,6 +6,7 @@ import (
 	"pybbs-go/filters"
 	"regexp"
     "strconv"
+	"net/http"
 )
 
 type UserController struct {
@@ -88,6 +89,11 @@ func (c *UserController) UpdatePwd() {
 func (c *UserController) UpdateAvatar() {
 	flash := beego.NewFlash()
 	f, h, err := c.GetFile("avatar")
+	if err == http.ErrMissingFile {
+		flash.Error("请选择文件")
+		flash.Store(&c.Controller)
+		c.Redirect("/user/setting", 302)
+	}
 	defer f.Close()
 	if err != nil {
 		flash.Error("上传失败")

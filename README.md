@@ -12,7 +12,8 @@
 - [github.com/astaxie/beego/orm](https://github.com/astaxie/beego/orm)
 - [github.com/xeonx/timeago](https://github.com/xeonx/timeago)
 - [github.com/russross/blackfriday](https://github.com/russross/blackfriday)
-- [github.com/sluu99/uuid](github.com/sluu99/uuid)
+- [github.com/sluu99/uuid](https://github.com/sluu99/uuid)
+- [github.com/go-sql-driver/mysql](https://github.com/go-sql-driver/mysql)
 
 ## 其他版本
 

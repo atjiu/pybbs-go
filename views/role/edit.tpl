@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-9">
     <div class="panel panel-default">
-      <div class="panel-heading">添加角色</div>
+      <div class="panel-heading">编辑角色</div>
       <div class="panel-body">
         {{template "../components/flash_error.tpl" .}}
         <form action="/role/edit/{{.Role.Id}}" method="post">
