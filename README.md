@@ -56,6 +56,8 @@
 
 欢迎大家提pr
 
+感谢 [@mikemouse2016](https://github.com/mikemouse2016) 的贡献，有需要装程序里的sql语句都改成orm实现的话，可以参见 [issues](https://github.com/tomoya92/pybbs-go/issues/2)
+
 ## 捐赠
 
 ![image](https://cloud.githubusercontent.com/assets/6915570/18000010/9283d530-6bae-11e6-8c34-cd27060b9074.png)
