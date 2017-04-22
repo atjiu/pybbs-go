@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 	"github.com/astaxie/beego/orm"
-	"github.com/pybbs-go/utils"
+	"github.com/tomoya92/pybbs-go/utils"
 	"strconv"
 )
 

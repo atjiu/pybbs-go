@@ -1,13 +1,13 @@
 package main
 
 import (
-	_ "github.com/pybbs-go/routers"
+	_ "github.com/tomoya92/pybbs-go/routers"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	"github.com/pybbs-go/models"
+	"github.com/tomoya92/pybbs-go/models"
 	_ "github.com/go-sql-driver/mysql"
-	_ "github.com/pybbs-go/utils"
-	_ "github.com/pybbs-go/templates"
+	_ "github.com/tomoya92/pybbs-go/utils"
+	_ "github.com/tomoya92/pybbs-go/templates"
 )
 
 func init() {

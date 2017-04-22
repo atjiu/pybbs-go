@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/pybbs-go/models"
+	"github.com/tomoya92/pybbs-go/models"
 	"strconv"
-	"github.com/pybbs-go/filters"
+	"github.com/tomoya92/pybbs-go/filters"
 )
 
 type TopicController struct {
