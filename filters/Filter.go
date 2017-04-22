@@ -2,7 +2,7 @@ package filters
 
 import (
     "github.com/astaxie/beego/context"
-    "pybbs-go/models"
+    "github.com/pybbs-go/models"
     "github.com/astaxie/beego"
     "regexp"
 )

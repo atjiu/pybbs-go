@@ -2,10 +2,10 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"pybbs-go/models"
-	"pybbs-go/filters"
+	"github.com/pybbs-go/models"
+	"github.com/pybbs-go/filters"
 	"regexp"
-    "strconv"
+	"strconv"
 	"net/http"
 )
 
