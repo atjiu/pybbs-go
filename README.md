@@ -21,11 +21,11 @@
 
 ## 如何开始
 
-- go get github.com/tomoya92/pybbs-go
+- 克隆代码到 $GOPATH/src 下
 - 安装上面的依赖
 - 安装 [bee](https://github.com/beego/bee) 工具
 - 在mysql数据库里创建数据库名字叫pybbs-go
-- 进入 GOPATH/src/github.com/pybbs-go 目录
+- 进入 pybbs-go 目录
 - 修改conf/app.conf文件里的jdbc.username 和 jdbc.password
 - 运行 bee run
 - 将pybbs-go.sql导入数据库

@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/tomoya92/pybbs-go/filters"
-	"github.com/tomoya92/pybbs-go/models"
+	"pybbs-go/filters"
+	"pybbs-go/models"
 	"github.com/sluu99/uuid"
 	"strconv"
 )

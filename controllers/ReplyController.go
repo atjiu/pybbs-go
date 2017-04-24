@@ -3,9 +3,9 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"strconv"
-	"github.com/tomoya92/pybbs-go/models"
-	"github.com/tomoya92/pybbs-go/filters"
-	"github.com/tomoya92/pybbs-go/utils"
+	"pybbs-go/models"
+	"pybbs-go/filters"
+	"pybbs-go/utils"
 )
 
 type ReplyController struct {
