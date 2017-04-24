@@ -14,10 +14,11 @@
 - [github.com/russross/blackfriday](https://github.com/russross/blackfriday)
 - [github.com/sluu99/uuid](https://github.com/sluu99/uuid)
 - [github.com/go-sql-driver/mysql](https://github.com/go-sql-driver/mysql)
+- [github.com/hsluoyz/casbin/api](https://github.com/hsluoyz/casbin/api)
 
 ## 其他版本
 
-- Java版朋也社区: [https://bbs.tomoya.cn](https://bbs.tomoya.cn)
+- Java版朋也社区: [https://github.com/tomoya92/pybbs](https://github.com/tomoya92/pybbs)
 
 ## 如何开始
 
@@ -37,6 +38,10 @@
 - 如果访问地址不是localhost,需要修改conf/app.conf文件里的cookie.domain,否则登录后不会记录登录状态
 
 ## 权限部分截图
+
+> 权限从提交版本 [c8b029e](https://github.com/tomoya92/pybbs-go/commit/c8b029e86a32b459a378de30bd4045c3ce3a5163) 开始就换成了[casbin](https://github.com/hsluoyz/casbin)
+>
+> 并且感谢 [@hsluoyz](https://github.com/hsluoyz) 的集成支持
 
 ![qq20160826-0 2x](https://cloud.githubusercontent.com/assets/6915570/18008071/4e509d50-6bd9-11e6-8663-6e81af221079.png)
 ![qq20160826-1 2x](https://cloud.githubusercontent.com/assets/6915570/18008074/4e87322a-6bd9-11e6-9bd5-bab182846204.png)
