@@ -40,8 +40,6 @@
 ## 权限部分截图
 
 > 权限从提交版本 [c8b029e](https://github.com/tomoya92/pybbs-go/commit/c8b029e86a32b459a378de30bd4045c3ce3a5163) 开始就换成了[casbin](https://github.com/hsluoyz/casbin)
->
-> 并且感谢 [@hsluoyz](https://github.com/hsluoyz) 的集成支持
 
 ![qq20160826-0 2x](https://cloud.githubusercontent.com/assets/6915570/18008071/4e509d50-6bd9-11e6-8663-6e81af221079.png)
 ![qq20160826-1 2x](https://cloud.githubusercontent.com/assets/6915570/18008074/4e87322a-6bd9-11e6-9bd5-bab182846204.png)
@@ -51,7 +49,6 @@
 
 ## 碰到问题怎么办?
 
-1. 到 https://bbs.tomoya.cn 上提问答
 2. 在Github上提 Issues
 3. 加QQ群：419343003
 
@@ -61,7 +58,8 @@
 
 欢迎大家提pr
 
-感谢 [@mikemouse2016](https://github.com/mikemouse2016) 的贡献，有需要装程序里的sql语句都改成orm实现的话，可以参见 [issues](https://github.com/tomoya92/pybbs-go/issues/2)
+- 感谢 [@mikemouse2016](https://github.com/mikemouse2016) 的贡献，有需要装程序里的sql语句都改成orm实现的话，可以参见 [issues](https://github.com/tomoya92/pybbs-go/issues/2)
+- 感谢 [@hsluoyz](https://github.com/hsluoyz) 对本项目的权限集成
 
 ## 捐赠
 
