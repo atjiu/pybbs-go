@@ -5,6 +5,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	"strconv"
 	"pybbs-go/utils"
+	"github.com/hsluoyz/casbin/api"
 )
 
 type User struct {
@@ -18,6 +19,48 @@ type User struct {
 	Signature string `orm:"null;size(1000)"`
 	InTime    time.Time `orm:"auto_now_add;type(datetime)"`
 	Roles     []*Role `orm:"rel(m2m)"`
+}
+
+var Enforcer *api.Enforcer = nil
+
+func getAttr(name string, attr string) string {
+	if attr != "url" {
+		return ""
+	}
+
+	permissions := FindPermissions()
+	for _, permission := range permissions {
+		if name == strconv.Itoa(permission.Id) {
+			return permission.Url
+		}
+	}
+	return ""
+}
+
+func getAttrFunc(args ...interface{}) (interface{}, error) {
+	name := args[0].(string)
+	attr := args[1].(string)
+
+	return (string)(getAttr(name, attr)), nil
+}
+
+func Init() {
+	Enforcer = &api.Enforcer{}
+	Enforcer.InitWithFile("rbac_model.conf", "")
+	Enforcer.AddActionAttributeFunction(getAttrFunc)
+
+	o := orm.NewOrm()
+	var res []orm.Params
+	o.Raw("select user_id, role_id from user_roles").Values(&res, "user_id", "role_id")
+	for _, param := range res {
+		Enforcer.AddRoleForUser(param["user_id"].(string), param["role_id"].(string))
+	}
+
+	o = orm.NewOrm()
+	o.Raw("select role_id, permission_id from role_permissions").Values(&res, "role_id", "permission_id")
+	for _, param := range res {
+		Enforcer.AddPermissionForUser(param["role_id"].(string), param["permission_id"].(string))
+	}
 }
 
 func FindUserById(id int) (bool, User) {
@@ -70,41 +113,34 @@ func PageUser(p int, size int) utils.Page {
 	return utils.PageUtil(c, p, size, list)
 }
 
-func FindPermissionByUser(id int) []*Permission {
-	o := orm.NewOrm()
-	var permissions []*Permission
-	o.Raw("select p.* from permission p " +
-		"left join role_permissions rp on p.id = rp.permission_id " +
-		"left join role r on rp.role_id = r.id " +
-		"left join user_roles ur on r.id = ur.role_id " +
-		"left join user u on ur.user_id = u.id " +
-		"where u.id = ?", id).QueryRows(&permissions)
-	return permissions
-}
-
 func FindPermissionByUserIdAndPermissionName(userId int, name string) bool {
-	o := orm.NewOrm()
-	var permission Permission
-	o.Raw("select p.* from permission p " +
-		"left join role_permissions rp on p.id = rp.permission_id " +
-		"left join role r on rp.role_id = r.id " +
-		"left join user_roles ur on r.id = ur.role_id " +
-		"left join user u on ur.user_id = u.id " +
-		"where u.id = ? and p.name = ?", userId, name).QueryRow(&permission)
-	return permission.Id > 0
+	permissions := FindPermissions()
+	for _, permission := range permissions {
+		if name == permission.Name {
+			return Enforcer.Enforce(strconv.Itoa(userId), permission.Url)
+		}
+	}
+
+	return false
 }
 
 func DeleteUser(user *User) {
+	Enforcer.DeleteUser(strconv.Itoa(user.Id))
+
 	o := orm.NewOrm()
 	o.Delete(user)
 }
 
 func DeleteUserRolesByUserId(user_id int) {
+	Enforcer.DeleteRolesForUser(strconv.Itoa(user_id))
+
 	o := orm.NewOrm()
 	o.Raw("delete from user_roles where user_id = ?", user_id).Exec()
 }
 
 func SaveUserRole(user_id int, role_id int) {
+	Enforcer.AddRoleForUser(strconv.Itoa(user_id), strconv.Itoa(role_id))
+
 	o := orm.NewOrm()
 	o.Raw("insert into user_roles (user_id, role_id) values (?, ?)", user_id, role_id).Exec()
 }

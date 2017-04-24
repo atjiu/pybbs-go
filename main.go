@@ -21,6 +21,8 @@ func init() {
 		new(models.Role),
 		new(models.Permission))
 	orm.RunSyncdb("default", false, true)
+
+	models.Init()
 }
 
 func main() {
