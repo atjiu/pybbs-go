@@ -1,6 +1,9 @@
 package models
 
-import "github.com/astaxie/beego/orm"
+import (
+	"github.com/astaxie/beego/orm"
+	"strconv"
+)
 
 type Permission struct {
 	Id               int `orm:"pk;auto"`
@@ -48,11 +51,15 @@ func UpdatePermission(permission *Permission) int64 {
 }
 
 func DeletePermission(permission *Permission) {
+	Enforcer.DeletePermission(strconv.Itoa(permission.Id))
+
 	o := orm.NewOrm()
 	o.Delete(permission)
 }
 
 func DeleteRolePermissionByPermissionId(permission_id int) {
+	Enforcer.DeletePermission(strconv.Itoa(permission_id))
+
 	o := orm.NewOrm()
 	o.Raw("delete from role_permissions where permission_id = ?", permission_id).Exec()
 }
