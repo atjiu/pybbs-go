@@ -5,7 +5,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	"strconv"
 	"pybbs-go/utils"
-	"github.com/hsluoyz/casbin/api"
+	"github.com/hsluoyz/casbin"
 )
 
 type User struct {
@@ -21,7 +21,7 @@ type User struct {
 	Roles     []*Role `orm:"rel(m2m)"`
 }
 
-var Enforcer *api.Enforcer = nil
+var Enforcer *casbin.Enforcer = nil
 
 func getAttr(name string, attr string) string {
 	if attr != "url" {
@@ -45,7 +45,7 @@ func getAttrFunc(args ...interface{}) (interface{}, error) {
 }
 
 func Init() {
-	Enforcer = &api.Enforcer{}
+	Enforcer = &casbin.Enforcer{}
 	Enforcer.InitWithFile("rbac_model.conf", "")
 	Enforcer.AddActionAttributeFunction(getAttrFunc)
 
