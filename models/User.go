@@ -5,7 +5,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	"strconv"
 	"pybbs-go/utils"
-	"github.com/hsluoyz/casbin"
+	"github.com/casbin/casbin"
 )
 
 type User struct {
