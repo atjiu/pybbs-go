@@ -23,11 +23,7 @@ type User struct {
 
 var Enforcer *casbin.Enforcer = nil
 
-func getAttr(name string, attr string) string {
-	if attr != "url" {
-		return ""
-	}
-
+func getURL(name string) string {
 	permissions := FindPermissions()
 	for _, permission := range permissions {
 		if name == strconv.Itoa(permission.Id) {
@@ -37,17 +33,16 @@ func getAttr(name string, attr string) string {
 	return ""
 }
 
-func getAttrFunc(args ...interface{}) (interface{}, error) {
+func getURLFunc(args ...interface{}) (interface{}, error) {
 	name := args[0].(string)
-	attr := args[1].(string)
 
-	return (string)(getAttr(name, attr)), nil
+	return (string)(getURL(name)), nil
 }
 
 func Init() {
 	Enforcer = &casbin.Enforcer{}
 	Enforcer.InitWithFile("rbac_model.conf", "")
-	Enforcer.AddActionAttributeFunction(getAttrFunc)
+	Enforcer.AddFunction("getURL", getURLFunc)
 
 	o := orm.NewOrm()
 	var res []orm.Params
