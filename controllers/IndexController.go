@@ -37,6 +37,8 @@ func (c *IndexController) LoginPage() {
         c.Redirect("/", 302)
     } else {
         beego.ReadFromRequest(&c.Controller)
+        u := models.FindPermissionByUser(1)
+        beego.Debug(u)
         c.Data["PageTitle"] = "登录"
         c.Layout = "layout/layout.tpl"
         c.TplName = "login.tpl"

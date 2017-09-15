@@ -4,7 +4,7 @@ import (
     "github.com/astaxie/beego/context"
     "pybbs-go/models"
     "github.com/astaxie/beego"
-    "strconv"
+    "regexp"
 )
 
 func IsLogin(ctx *context.Context) (bool, models.User) {
@@ -21,9 +21,16 @@ var HasPermission = func(ctx *context.Context) {
     if !ok {
         ctx.Redirect(302, "/login")
     } else {
+        permissions := models.FindPermissionByUser(user.Id)
         url := ctx.Request.RequestURI
         beego.Debug("url: ", url)
-        flag := models.Enforcer.Enforce(strconv.Itoa(user.Id), url)
+        var flag = false
+        for _, v := range permissions {
+            if a, _ := regexp.MatchString(v.Url, url); a {
+                flag = true
+                break
+            }
+        }
         if !flag {
             ctx.WriteString("你没有权限访问这个页面")
         }

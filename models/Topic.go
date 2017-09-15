@@ -84,6 +84,6 @@ func DeleteTopic(topic *Topic) {
 }
 
 func DeleteTopicByUser(user *User) {
-	o := orm.NewOrm()
-	o.Raw("delete from topic where user_id = ?", user.Id).Exec()
+    o := orm.NewOrm()
+    o.Raw("delete from topic where user_id = ?", user.Id).Exec()
 }
