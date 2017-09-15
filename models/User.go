@@ -40,8 +40,7 @@ func getURLFunc(args ...interface{}) (interface{}, error) {
 }
 
 func Init() {
-	Enforcer = &casbin.Enforcer{}
-	Enforcer.InitWithFile("rbac_model.conf", "")
+	Enforcer = casbin.NewEnforcer("rbac_model.conf")
 	Enforcer.AddFunction("getURL", getURLFunc)
 
 	o := orm.NewOrm()
