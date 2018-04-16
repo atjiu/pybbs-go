@@ -46,7 +46,7 @@
 
 ## 碰到问题怎么办?
 
-1. 到 https://bbs.tomoya.cn 上提问答
+1. 到 https://yiiu.co 上提问答
 2. 在Github上提 Issues
 3. 加QQ群：419343003
 
