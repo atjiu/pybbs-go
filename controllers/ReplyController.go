@@ -1,11 +1,13 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego"
-	"strconv"
-	"pybbs-go/models"
 	"pybbs-go/filters"
+	"pybbs-go/models"
+	"pybbs-go/templates"
 	"pybbs-go/utils"
+	"strconv"
+
+	"github.com/astaxie/beego"
 )
 
 type ReplyController struct {
@@ -23,10 +25,11 @@ func (c *ReplyController) Save() {
 		} else {
 			_, user := filters.IsLogin(c.Ctx)
 			topic := models.FindTopicById(tid)
-			reply := models.Reply{Content: content, Topic: &topic, User: &user, Up: 0}
+			htmlContent := templ.Markdown(content)
+			reply := models.Reply{Content: content, Topic: &topic, User: &user, Up: 0, HtmlContent: htmlContent}
 			models.SaveReply(&reply)
 			models.IncrReplyCount(&topic)
-			c.Redirect("/topic/" + strconv.Itoa(tid), 302)
+			c.Redirect("/topic/"+strconv.Itoa(tid), 302)
 		}
 	}
 }
@@ -62,7 +65,7 @@ func (c *ReplyController) Delete() {
 		tid := reply.Topic.Id
 		models.ReduceReplyCount(reply.Topic)
 		models.DeleteReply(&reply)
-		c.Redirect("/topic/" + strconv.Itoa(tid), 302)
+		c.Redirect("/topic/"+strconv.Itoa(tid), 302)
 	} else {
 		c.Ctx.WriteString("回复不存在")
 	}
