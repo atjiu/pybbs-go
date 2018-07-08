@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"pybbs-go/filters"
 	"pybbs-go/models"
+	"pybbs-go/utils"
 	"github.com/sluu99/uuid"
 	"strconv"
 )
@@ -86,6 +87,7 @@ func (c *IndexController) Register() {
 		c.Redirect("/register", 302)
 	} else {
 		var token = uuid.Rand().Hex()
+		var md5Pwd = 
 		user := models.User{Username: username, Password: password, Avatar: "/static/imgs/avatar.png", Token: token}
 		models.SaveUser(&user)
 		// others are ordered as cookie's max age time, path,domain, secure and httponly.
