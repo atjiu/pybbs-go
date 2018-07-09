@@ -65,7 +65,7 @@
           </td>
         </tr>
         <tr>
-          <td><p>{{str2html (.Content | markdown)}}</p></td>
+          <td><p>{{str2html (.HtmlContent)}}</p></td>
         </tr>
         {{end}}
         </tbody>

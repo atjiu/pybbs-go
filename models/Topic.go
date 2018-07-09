@@ -1,22 +1,24 @@
 package models
 
 import (
-	"time"
-	"github.com/astaxie/beego/orm"
 	"pybbs-go/utils"
 	"strconv"
+	"time"
+
+	"github.com/astaxie/beego/orm"
 )
 
 type Topic struct {
-	Id            int `orm:"pk;auto"`
-	Title         string `orm:"unique"`
-	Content       string `orm:"type(text);null"`
+	Id            int       `orm:"pk;auto"`
+	Title         string    `orm:"unique"`
+	Content       string    `orm:"type(text);null"`
+	HtmlContent   string    `orm:"type(text);null"`
 	InTime        time.Time `orm:"auto_now_add;type(datetime)"`
-	User          *User `orm:"rel(fk)"`
-	Section       *Section `orm:"rel(fk)"`
-	View          int `orm:"default(0)"`
-	ReplyCount    int `orm:"default(0)"`
-	LastReplyUser *User `orm:"rel(fk);null"`
+	User          *User     `orm:"rel(fk)"`
+	Section       *Section  `orm:"rel(fk)"`
+	View          int       `orm:"default(0)"`
+	ReplyCount    int       `orm:"default(0)"`
+	LastReplyUser *User     `orm:"rel(fk);null"`
 	LastReplyTime time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
@@ -84,6 +86,6 @@ func DeleteTopic(topic *Topic) {
 }
 
 func DeleteTopicByUser(user *User) {
-    o := orm.NewOrm()
-    o.Raw("delete from topic where user_id = ?", user.Id).Exec()
+	o := orm.NewOrm()
+	o.Raw("delete from topic where user_id = ?", user.Id).Exec()
 }

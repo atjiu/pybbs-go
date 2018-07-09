@@ -1,10 +1,12 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego"
-	"pybbs-go/models"
-	"strconv"
 	"pybbs-go/filters"
+	"pybbs-go/models"
+	"pybbs-go/templates"
+	"strconv"
+
+	"github.com/astaxie/beego"
 )
 
 type TopicController struct {
@@ -35,9 +37,10 @@ func (c *TopicController) Save() {
 		s, _ := strconv.Atoi(sid)
 		section := models.Section{Id: s}
 		_, user := filters.IsLogin(c.Ctx)
-		topic := models.Topic{Title: title, Content: content, Section: &section, User: &user}
+		htmlContent := templ.Markdown(content)
+		topic := models.Topic{Title: title, Content: content, Section: &section, User: &user, HtmlContent: htmlContent}
 		id := models.SaveTopic(&topic)
-		c.Redirect("/topic/" + strconv.FormatInt(id, 10), 302)
+		c.Redirect("/topic/"+strconv.FormatInt(id, 10), 302)
 	}
 }
 
@@ -47,7 +50,7 @@ func (c *TopicController) Detail() {
 	if tid > 0 {
 		c.Data["IsLogin"], c.Data["UserInfo"] = filters.IsLogin(c.Controller.Ctx)
 		topic := models.FindTopicById(tid)
-		models.IncrView(&topic)//查看+1
+		models.IncrView(&topic) //查看+1
 		c.Data["PageTitle"] = topic.Title
 		c.Data["Topic"] = topic
 		c.Data["Replies"] = models.FindReplyByTopic(&topic)
@@ -76,25 +79,27 @@ func (c *TopicController) Edit() {
 
 func (c *TopicController) Update() {
 	flash := beego.NewFlash()
-    id, _ := strconv.Atoi(c.Ctx.Input.Param(":id"))
+	id, _ := strconv.Atoi(c.Ctx.Input.Param(":id"))
 	title, content, sid := c.Input().Get("title"), c.Input().Get("content"), c.Input().Get("sid")
 	if len(title) == 0 || len(title) > 120 {
 		flash.Error("话题标题不能为空且不能超过120个字符")
 		flash.Store(&c.Controller)
-		c.Redirect("/topic/edit/" + strconv.Itoa(id), 302)
+		c.Redirect("/topic/edit/"+strconv.Itoa(id), 302)
 	} else if len(sid) == 0 {
 		flash.Error("请选择话题版块")
 		flash.Store(&c.Controller)
-		c.Redirect("/topic/edit/" + strconv.Itoa(id), 302)
+		c.Redirect("/topic/edit/"+strconv.Itoa(id), 302)
 	} else {
 		s, _ := strconv.Atoi(sid)
 		section := models.Section{Id: s}
+		htmlContent := templ.Markdown(content)
 		topic := models.FindTopicById(id)
 		topic.Title = title
 		topic.Content = content
+		topic.HtmlContent = htmlContent
 		topic.Section = &section
 		models.UpdateTopic(&topic)
-		c.Redirect("/topic/" + strconv.Itoa(id), 302)
+		c.Redirect("/topic/"+strconv.Itoa(id), 302)
 	}
 }
 

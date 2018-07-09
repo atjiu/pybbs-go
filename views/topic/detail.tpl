@@ -32,7 +32,7 @@
       </div>
       <div class="divide"></div>
       <div class="panel-body topic-detail-content">
-        {{str2html (.Topic.Content | markdown)}}
+        {{str2html (.Topic.HtmlContent)}}
       </div>
     </div>
     {{if eq .Topic.ReplyCount 0}}
@@ -58,7 +58,7 @@
                 <span id="up_{{.Id}}">{{.Up}}赞</span>
               </span>
             </div>
-            {{str2html (.Content | markdown)}}
+            {{str2html (.HtmlContent)}}
           </div>
         </div>
         <div class="divide mar-top-5"></div>

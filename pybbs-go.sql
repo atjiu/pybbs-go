@@ -163,7 +163,7 @@ LOCK TABLES `user` WRITE;
 
 INSERT INTO `user` (`id`, `username`, `password`, `token`, `avatar`, `email`, `url`, `signature`, `in_time`)
 VALUES
-	(1,'朋也','123123','fcd1cb8e-b71f-46c3-9974-7225997b40c7','/static/imgs/avatar.png','','https://tomoya.cn','这家伙很懒，什么都没留下~','2016-08-26 09:22:16');
+	(1,'朋也','4297f44b13955235245b2497399d7a93','fcd1cb8e-b71f-46c3-9974-7225997b40c7','/static/imgs/avatar.png','','https://tomoya.cn','这家伙很懒，什么都没留下~','2016-08-26 09:22:16');
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
