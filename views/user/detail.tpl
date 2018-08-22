@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-md-9">
-    {{if .CurrentUserInfo}}
+  {{if .CurrentUserInfo}}
+  <div class="col-md-3">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="media">
@@ -18,6 +18,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">{{.CurrentUserInfo.Username}}创建的话题</div>
       <div class="panel-body">
@@ -74,13 +76,10 @@
         <a href="/user/{{.CurrentUserInfo.Username}}/replies">{{.CurrentUserInfo.Username}}更多回复&gt;&gt;</a>
       </div>
     </div>
-    {{else}}
+  </div>
+  {{else}}
     <div class="panel panel-default">
       <div class="panel-body">用户不存在</div>
     </div>
-    {{end}}
-  </div>
-  <div class="col-md-3 hidden-sm hidden-xs">
-
-  </div>
+  {{end}}
 </div>

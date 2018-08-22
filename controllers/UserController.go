@@ -7,6 +7,7 @@ import (
   "regexp"
   "strconv"
   "net/http"
+  "golang.org/x/crypto/bcrypt"
 )
 
 type UserController struct {
@@ -67,7 +68,7 @@ func (c *UserController) UpdatePwd() {
   flash := beego.NewFlash()
   oldpwd, newpwd := c.Input().Get("oldpwd"), c.Input().Get("newpwd")
   _, user := filters.IsLogin(c.Ctx)
-  if user.Password != oldpwd {
+  if bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(oldpwd)) != nil {
     flash.Error("旧密码不正确")
     flash.Store(&c.Controller)
     c.Redirect("/user/setting", 302)
@@ -79,7 +80,8 @@ func (c *UserController) UpdatePwd() {
     c.Redirect("/user/setting", 302)
     return
   }
-  user.Password = newpwd
+  bcryptNewPassword, _ := bcrypt.GenerateFromPassword([]byte(newpwd), bcrypt.DefaultCost)
+  user.Password = string(bcryptNewPassword)
   models.UpdateUser(&user)
   flash.Success("密码修改成功")
   flash.Store(&c.Controller)

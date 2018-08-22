@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         <a href="/">主页</a> / 个人设置
@@ -66,8 +66,5 @@
         </form>
       </div>
     </div>
-  </div>
-  <div class="col-md-3 hidden-sm hidden-xs">
-    {{template "../components/user_info.tpl" .}}
   </div>
 </div>

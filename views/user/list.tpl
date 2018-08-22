@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         用户管理
@@ -26,9 +26,6 @@
         <ul id="page"></ul>
       </div>
     </div>
-  </div>
-  <div class="col-md-3 hidden-sm hidden-xs">
-
   </div>
 </div>
 <script type="text/javascript" src="/static/js/bootstrap-paginator.min.js"></script>
