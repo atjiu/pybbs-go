@@ -14,6 +14,7 @@
 - [github.com/russross/blackfriday](https://github.com/russross/blackfriday)
 - [github.com/sluu99/uuid](https://github.com/sluu99/uuid)
 - [github.com/go-sql-driver/mysql](https://github.com/go-sql-driver/mysql)
+- [golang.org/x/crypto/bcrypt](https://golang.org/x/crypto/bcrypt)
 
 ## 其他版本
 
@@ -22,7 +23,8 @@
 ## 如何开始
 
 - 克隆代码到 $GOPATH/src 下
-- 安装上面的依赖
+- 安装 `govendor` 包管理器 `go get -u -v github.com/kardianos/govendor`
+- 运行命令 `govendor sync` 安装依赖
 - 安装 [bee](https://github.com/beego/bee) 工具
 - 在mysql数据库里创建数据库名字叫pybbs-go
 - 进入 pybbs-go 目录

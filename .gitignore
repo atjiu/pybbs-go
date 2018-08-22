@@ -1,2 +1,4 @@
 .idea
 pybbs-go
+vendor/github.com
+vendor/golang.org
