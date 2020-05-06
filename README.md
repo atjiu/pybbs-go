@@ -34,17 +34,37 @@
 - 浏览器输入 http://localhost:8080
 - 登录 用户名:朋也 密码:123123 默认是超级管理员,进去了可以体验权限部分
 
+**在执行 govendor sync 时报错**
+
+```
+Error: Remotes failed for:
+        Failed for "golang.org/x/crypto/bcrypt" (failed to ping remote repo): unrecognized import path "golang.org/x/crypto/bcrypt"
+        Failed for "golang.org/x/crypto/blowfish" (failed to ping remote repo): unrecognized import path "golang.org/x/crypto/blowfish"
+```
+
+解决办法如下
+
+先手动安装一下 crypto 项目
+
+```
+cd ${GOPATH}/src/golang.org/x
+git clone https://github.com/golang/crypto.git
+```
+
+然后打开项目中的 vendor 文件夹，将 vendor.json 中的 `golang.org/x/crypto/bcrypt` 和 `golang.org/x/crypto/blowfish` 两个配置项给删除即可解决
+
+
 ## 注意
 
 - 如果访问地址不是localhost,需要修改conf/app.conf文件里的cookie.domain,否则登录后不会记录登录状态
 
 ## 权限部分截图
 
-![qq20160826-0 2x](https://cloud.githubusercontent.com/assets/6915570/18008071/4e509d50-6bd9-11e6-8663-6e81af221079.png)
-![qq20160826-1 2x](https://cloud.githubusercontent.com/assets/6915570/18008074/4e87322a-6bd9-11e6-9bd5-bab182846204.png)
-![qq20160826-2 2x](https://cloud.githubusercontent.com/assets/6915570/18008072/4e6c3592-6bd9-11e6-9a8c-d66f9a2e2aba.png)
-![qq20160826-3 2x](https://cloud.githubusercontent.com/assets/6915570/18008073/4e86cae2-6bd9-11e6-9208-bdcb371424d8.png)
-![qq20160826-4 2x](https://cloud.githubusercontent.com/assets/6915570/18008075/4e917046-6bd9-11e6-9c43-322c85751d67.png)
+![qq20160826-0](./screenshot/4e509d50-6bd9-11e6-8663-6e81af221079.png)
+![qq20160826-1](./screenshot/4e87322a-6bd9-11e6-9bd5-bab182846204.png)
+![qq20160826-2](./screenshot/4e6c3592-6bd9-11e6-9a8c-d66f9a2e2aba.png)
+![qq20160826-3](./screenshot/4e86cae2-6bd9-11e6-9208-bdcb371424d8.png)
+![qq20160826-4](./screenshot/4e917046-6bd9-11e6-9c43-322c85751d67.png)
 
 ## 碰到问题怎么办?
 
@@ -61,8 +81,8 @@
 
 ## 捐赠
 
-![image](https://cloud.githubusercontent.com/assets/6915570/18000010/9283d530-6bae-11e6-8c34-cd27060b9074.png)
-![image](https://cloud.githubusercontent.com/assets/6915570/17999995/7c2a4db4-6bae-11e6-891c-4b6bc4f00f4b.png)
+![image](./screenshot/9283d530-6bae-11e6-8c34-cd27060b9074.png)
+![image](./screenshot/7c2a4db4-6bae-11e6-891c-4b6bc4f00f4b.png)
 
 请朋也喝杯茶吧
 
