@@ -18,7 +18,7 @@
 
 ## 其他版本
 
-- Java版朋也社区: [https://yiiu.co](https://yiiu.co)
+- Java版朋也社区: [https://github.com/atjiu/pybbs](https://github.com/atjiu/pybbs)
 
 ## 如何开始
 
